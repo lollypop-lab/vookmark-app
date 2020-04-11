@@ -1,0 +1,6 @@
+<li>{{folder.title}}</li>
+<li>
+  <ul>
+    <li><app-folder *ngFor="let folder of folders" [data]="folder"></app-folder></li>
+  </ul>
+</li>
