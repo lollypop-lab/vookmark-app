@@ -5,7 +5,9 @@ const routes: Routes = [
   {
     path: '',
     loadChildren: () => import('./home/home.module').then(m => m.HomeModule)
-  }
+  },
+  // TODO: need to replace this wildcard with 404 page
+  { path: '**',   redirectTo: '/', pathMatch: 'full' }
 ];
 
 @NgModule({

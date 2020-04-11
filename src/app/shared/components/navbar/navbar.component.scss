@@ -1,0 +1,15 @@
+@import "~src/app/styles/brand";
+
+.navbar {
+  padding: .5rem;
+  min-height: 5rem;
+  background: $background-light;
+  display: flex;
+  align-items: center;
+
+  h2 {
+    background-image: linear-gradient(to right,#f05a28,#ec008c);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+}
