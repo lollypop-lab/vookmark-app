@@ -6,12 +6,19 @@ import {Component, Input, OnInit} from '@angular/core';
   styleUrls: ['./sidebar.component.scss']
 })
 export class SidebarComponent implements OnInit {
-  @Input() data;
-  folders = [];
+  @Input() folders;
+  public isNestedItemVisiabled: boolean = false;
   constructor() { }
 
-  ngOnInit(): void {
-    this.folders = this.data.folders;
+  public get isVisible(): boolean {
+    return this.isNestedItemVisiabled;
   }
 
+  ngOnInit(): void {
+    console.log(this.folders);
+  }
+
+  public onToggleClick(): void {
+    this.isNestedItemVisiabled = !this.isNestedItemVisiabled;
+  }
 }

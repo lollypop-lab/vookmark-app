@@ -7,9 +7,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DashboardComponent implements OnInit {
   data = {
-    folders: [
+    collections : [
       {
-        id: 1, title: 'Folder Title 1',
+        id: 1, title: 'Videos',
         folders: [
           {
             id: 2, title: 'Sub Folder Title 2',

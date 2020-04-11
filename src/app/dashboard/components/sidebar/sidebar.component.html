@@ -1,3 +1,25 @@
-<ul>
-  <li><app-folder *ngFor="let folder of folders" [data]="folder"></app-folder></li>
-</ul>
+<div class="sidebar-container">
+  <div class="sidebar-header">
+    <h1>VookMark</h1>
+    <p>Your own personalize bookmark manager</p>
+    <button>Add Bookmark</button>
+  </div>
+  <div class="sidebar-list">
+    <p class="sidebar-list__title">My Collections</p>
+    <div
+      class="sidebar-list__items"
+      *ngFor="let folder of folders">
+      <span (click)="onToggleClick()">
+        {{ folder.title }}
+      </span>
+      <div *ngIf="isVisible">
+        {{folder | json}}
+      </div>
+    </div>
+  </div>
+  <div class="sidebar-action"></div>
+  <div class="sidebar-copyright">
+    <p>Made by Lollypop Lab</p>
+    <p>Copyright © 2020 Vookmark. All rights reserved</p>
+  </div>
+</div>

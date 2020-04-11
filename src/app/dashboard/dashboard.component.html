@@ -1,3 +1,9 @@
-<p>dashboard works!</p>
-<app-sidebar [data]="data"></app-sidebar>
-<app-bookmarks-container></app-bookmarks-container>
+<div class="dashboard-container">
+  <div class="dashboard-sidebar">
+    <app-sidebar [folders]="data.collections"></app-sidebar>
+  </div>
+  <div class="dashboard-bookmarks">
+    <app-bookmarks-container></app-bookmarks-container>
+  </div>
+</div>
+

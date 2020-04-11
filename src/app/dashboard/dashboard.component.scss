@@ -1,0 +1,17 @@
+@import "~src/app/styles/brand";
+
+.dashboard-container {
+  display: flex;
+  height: 100vh;
+  box-sizing: border-box;
+}
+
+.dashboard-sidebar {
+  flex: 1;
+  background: $background-light;
+  padding: 1.5rem;
+}
+
+.dashboard-bookmarks {
+  flex: 4;
+}
