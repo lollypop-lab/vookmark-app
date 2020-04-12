@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Bookmarks} from '../mockData/bookmark.mock';
+import {Store} from '@ngrx/store';
+import {getBookmarksList, getFolders, selectDashboardState} from '../selectors/dashboard.selectors';
 
 @Component({
   selector: 'app-dashboard',
@@ -7,9 +9,14 @@ import {Bookmarks} from '../mockData/bookmark.mock';
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit {
-  data = Bookmarks;
-  constructor() { }
+  public data;
+  constructor(private store: Store) { }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.data = this.store.select(getFolders);
+    this.store.select(getFolders).subscribe(data => {
+      console.log(data);
+    })
+  }
 
 }

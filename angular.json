@@ -143,6 +143,7 @@
   },
   "defaultProject": "vookmark-app",
   "cli": {
-    "analytics": false
+    "defaultCollection": "@ngrx/schematics",
+    "analytics": "d6cabbe2-401a-423d-85a5-445c37e752d6"
   }
 }
