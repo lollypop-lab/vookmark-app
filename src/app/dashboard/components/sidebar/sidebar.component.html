@@ -9,12 +9,7 @@
     <div
       class="sidebar-list__items"
       *ngFor="let folder of folders">
-      <span (click)="onToggleClick()">
-        {{ folder.title }}
-      </span>
-      <div *ngIf="isVisible">
-        {{folder | json}}
-      </div>
+      <app-folder [folderInformation] = "folder"></app-folder>
     </div>
   </div>
   <div class="sidebar-action"></div>

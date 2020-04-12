@@ -9,5 +9,5 @@ export interface Folder {
   id: number;
   title: string;
   folders: [];
-  bookmarks: Bookmark;
+  bookmarks: [Bookmark];
 };

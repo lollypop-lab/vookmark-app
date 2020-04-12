@@ -1,6 +1,7 @@
 // TODO: need to work on this component
 // very important to manage both folder and link together
 import {Component, Input, OnInit} from '@angular/core';
+import {Folder} from '../../../models/bookmark.model';
 
 @Component({
   selector: 'app-folder',
@@ -8,17 +9,22 @@ import {Component, Input, OnInit} from '@angular/core';
   styleUrls: ['./folder.component.scss']
 })
 export class FolderComponent implements OnInit {
-  @Input() data;
-  folder = {
-    folders: []
-  };
-  folders = [];
+  @Input() folderInformation: Folder;
+  public hasBookmarks: boolean = false;
+  public hasSubFolders: boolean = false;
+  public isDropDownOn: boolean = false;
   constructor() { }
 
   ngOnInit(): void {
-    console.log(this.data);
-    this.folder = this.data;
-    this.folders = this.folder.folders;
+    if (this.folderInformation.bookmarks.length > 0) {
+      this.hasBookmarks = true;
+    }
+    if (this.folderInformation.folders) {
+      this.hasSubFolders = true;
+    }
   }
 
+  public onToggleClick(): void {
+    this.isDropDownOn = !this.isDropDownOn;
+  }
 }
