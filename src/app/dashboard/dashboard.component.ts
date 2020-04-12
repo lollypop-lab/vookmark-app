@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {Bookmarks} from '../mockData/bookmark.mock';
 
 @Component({
   selector: 'app-dashboard',
@@ -6,32 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit {
-  data = {
-    collections : [
-      {
-        id: 1, title: 'Videos',
-        folders: [
-          {
-            id: 2, title: 'Sub Folder Title 2',
-            folders: [
-              {
-                id: 2, title: 'Sub Sub Folder Title 3',
-                bookmarks: []
-              }
-            ],
-            bookmarks: [
-              {id: 1, title: 'Bookmark Title 1', url: 'http://bookmark.com', folder_id: 1},
-              {id: 2, title: 'Bookmark Title 2', url: 'http://bookmark2.com', folder_id: 1},
-            ]
-          }
-        ],
-        bookmarks: [
-          {id: 1, title: 'Bookmark Title 1', url: 'http://bookmark.com', folder_id: 1},
-          {id: 2, title: 'Bookmark Title 2', url: 'http://bookmark2.com', folder_id: 1},
-        ]
-      }
-    ]
-  };
+  data = Bookmarks;
   constructor() { }
 
   ngOnInit(): void {}

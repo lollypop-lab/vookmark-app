@@ -1,5 +1,23 @@
-<li>
-  <ul>
-    <li><app-folder *ngFor="let folder of folders" [data]="folder"></app-folder></li>
-  </ul>
-</li>
+<p class="folder_title" (click)="onToggleClick()">
+  {{folderInformation.title}}
+</p>
+<ng-template [ngIf]="isDropDownOn">
+  <div *ngIf="hasSubFolders">
+    <p>Lists of Folders:</p>
+    <ul>
+      <li *ngFor="let folder of folderInformation.folders">
+        <app-folder [folderInformation] = "folder"></app-folder>
+      </li>
+    </ul>
+  </div>
+
+  <div *ngIf="hasBookmarks">
+    <p>Lists of Bookmarks:</p>
+<!--    TODO: can remove to bookmark compontent-->
+    <ul>
+      <li *ngFor="let bookmark of folderInformation.bookmarks">
+        {{bookmark.title}}
+      </li>
+    </ul>
+  </div>
+</ng-template>
