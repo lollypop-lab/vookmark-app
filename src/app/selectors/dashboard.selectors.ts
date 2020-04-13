@@ -7,10 +7,10 @@ export const selectDashboardState = createFeatureSelector<fromDashboard.State>(
 
 export const getBookmarksList = createSelector(
   selectDashboardState,
-  (state) => state.lists
+  (state) => state.bookmarkList
 );
 
-export const getFolders = createSelector(
-  getBookmarksList,
-  (state) => state.collections
-)
+export const getFolderList = createSelector(
+  selectDashboardState,
+  (state) => state.folderList
+);

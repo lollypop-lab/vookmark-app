@@ -1,17 +1,22 @@
 import { Action, createReducer, on } from '@ngrx/store';
 import * as DashboardActions from '../actions/dashboard.actions';
-import {Bookmarks} from '../mockData/bookmark.mock';
+import {BookmarkList, Bookmarks, FolderList} from '../mockData/bookmark.mock';
+import {Bookmark, Folder} from '../models/bookmark.model';
 
 export const dashboardFeatureKey = 'dashboard';
 
 export interface State {
   loading: boolean;
   lists: any;
+  folderList: Array<Folder>;
+  bookmarkList: Array<Bookmark>;
 }
 
 export const initialState: State = {
   loading: false,
-  lists: Bookmarks
+  lists: Bookmarks,
+  folderList: FolderList,
+  bookmarkList: BookmarkList
 };
 
 

@@ -15,7 +15,11 @@ const routes: Routes = [
   {
     path: '',
     component: DashboardComponent
-  }
+  },
+  {
+    path: 'folders/:id',
+    component: DashboardComponent
+  },
 ];
 @NgModule({
   declarations: [DashboardComponent, SidebarComponent, BookmarksContainerComponent, FolderComponent],

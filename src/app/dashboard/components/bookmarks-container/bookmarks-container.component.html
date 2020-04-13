@@ -1,1 +1,13 @@
 <p>bookmarks-container works!</p>
+
+<div *ngIf="folders" class="folders">
+  <div class="single-folder" *ngFor="let folder of folders">
+    <a [routerLink]="'/dashboard/folders/' + folder.id">{{folder.title}}</a>
+  </div>
+</div>
+<div *ngIf="bookmarks" class="bookmarks">
+  <div class="single-bookmark" *ngFor="let bookmark of bookmarks">
+    <a href="{{bookmark.url}}" target="_blank">{{bookmark.title}}</a>
+    {{bookmark.url}}
+  </div>
+</div>

@@ -1,9 +1,9 @@
 <div class="dashboard-container">
   <div class="dashboard-sidebar">
-    <app-sidebar [folders]="data | async"></app-sidebar>
+    <app-sidebar *ngIf="dataLoaded" [folders]="folders"></app-sidebar>
   </div>
   <div class="dashboard-bookmarks">
-    <app-bookmarks-container></app-bookmarks-container>
+    <app-bookmarks-container [folders]="folders" [bookmarks]="bookmarks"></app-bookmarks-container>
   </div>
 </div>
 

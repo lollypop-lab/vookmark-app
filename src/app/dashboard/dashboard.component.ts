@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {Bookmarks} from '../mockData/bookmark.mock';
 import {Store} from '@ngrx/store';
-import {getBookmarksList, getFolders, selectDashboardState} from '../selectors/dashboard.selectors';
+import {getBookmarksList, getFolderList, selectDashboardState} from '../selectors/dashboard.selectors';
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-dashboard',
@@ -9,14 +10,28 @@ import {getBookmarksList, getFolders, selectDashboardState} from '../selectors/d
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit {
-  public data;
-  constructor(private store: Store) { }
+  public folders;
+  public bookmarks;
+  public dataLoaded: boolean = false;
+  constructor(private store: Store, private router: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.data = this.store.select(getFolders);
-    this.store.select(getFolders).subscribe(data => {
-      console.log(data);
-    })
+    this.router.params.subscribe(params => {
+      if(params.id) {
+        this.store.select(getFolderList).subscribe(folders => {
+          this.folders = folders.filter((folder) => folder.folder_id == params.id);
+          this.dataLoaded = true;
+        });
+        this.store.select(getBookmarksList).subscribe(bookmarks => {
+          this.bookmarks = bookmarks.filter(bookmark => bookmark.folder_id == params.id)
+        });
+      } else {
+        this.store.select(getFolderList).subscribe(folders => {
+          this.folders = folders;
+          this.dataLoaded = true;
+        });
+      }
+    });
   }
 
 }

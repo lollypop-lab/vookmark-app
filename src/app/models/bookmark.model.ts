@@ -8,6 +8,5 @@ export interface Bookmark {
 export interface Folder {
   id: number;
   title: string;
-  folders: [];
-  bookmarks: [Bookmark];
+  folder_id: any;
 };

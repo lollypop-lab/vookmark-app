@@ -16,12 +16,12 @@ export class FolderComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    if (this.folderInformation.bookmarks.length > 0) {
-      this.hasBookmarks = true;
-    }
-    if (this.folderInformation.folders) {
-      this.hasSubFolders = true;
-    }
+    // if (this.folderInformation.bookmarks.length > 0) {
+    //   this.hasBookmarks = true;
+    // }
+    // if (this.folderInformation.folders) {
+    //   this.hasSubFolders = true;
+    // }
   }
 
   public onToggleClick(): void {
