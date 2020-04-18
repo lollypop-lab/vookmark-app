@@ -15,17 +15,25 @@ export interface State {
 export const initialState: State = {
   loading: false,
   lists: Bookmarks,
-  folderList: FolderList,
-  bookmarkList: BookmarkList
+  folderList: [],
+  bookmarkList: []
 };
 
 
 export const reducer = createReducer(
   initialState,
 
-  on(DashboardActions.loadDashboards, state => state),
-  on(DashboardActions.loadDashboardsSuccess, (state, action) => state),
-  on(DashboardActions.loadDashboardsFailure, (state, action) => state),
+  on(DashboardActions.loadFolderList, state => state),
+  on(DashboardActions.loadFolderListSuccess, (state, action) => ({
+    ...state,
+    folderList: action.data
+  })),
+  on(DashboardActions.loadFolderListFailure, (state, action) => state),
+  on(DashboardActions.loadBookmarkListSuccess, (state, action) => ({
+    ...state,
+    bookmarkList: action.data
+  })),
+  on(DashboardActions.loadBookmarkListFailure, (state, action) => state),
 
 );
 

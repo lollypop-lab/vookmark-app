@@ -1,0 +1,47 @@
+@import "~src/app/styles/brand";
+h2 {
+  margin: 1rem;
+}
+.folders {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 1rem;
+}
+
+.single-folder {
+  width: 120px;
+  min-height: 120px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: $background-light;
+  margin: .5rem;
+  border-radius: 5px;
+  box-shadow: 0px 0px 1px 1px #252020;
+  a {
+    color: white;
+    text-decoration: none;
+    text-align: center;
+  }
+}
+
+.bookmarks{
+  display: flex;
+  flex-direction: column;
+  margin: 1rem;
+}
+
+.single-bookmark {
+  background: $background-light;
+  min-height: 60px;
+  margin: .5rem;
+  border-radius: 5px;
+  box-shadow: 0px 0px 1px 1px #252020;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  a {
+    color: white;
+    text-decoration: none;
+  }
+}

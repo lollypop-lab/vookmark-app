@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {Bookmarks} from '../mockData/bookmark.mock';
 import {Store} from '@ngrx/store';
-import {getBookmarksList, getFolderList, selectDashboardState} from '../selectors/dashboard.selectors';
+import {getBookmarksList, getFolderList} from '../selectors/dashboard.selectors';
 import {ActivatedRoute} from '@angular/router';
 
 @Component({
@@ -18,12 +17,13 @@ export class DashboardComponent implements OnInit {
   ngOnInit(): void {
     this.router.params.subscribe(params => {
       if(params.id) {
+        const id = Number(params.id);
         this.store.select(getFolderList).subscribe(folders => {
-          this.folders = folders.filter((folder) => folder.folder_id == params.id);
+          this.folders = folders.filter((folder) => folder.folder_id === id);
           this.dataLoaded = true;
         });
         this.store.select(getBookmarksList).subscribe(bookmarks => {
-          this.bookmarks = bookmarks.filter(bookmark => bookmark.folder_id == params.id)
+          this.bookmarks = bookmarks.filter(bookmark => bookmark.folder_id === id)
         });
       } else {
         this.store.select(getFolderList).subscribe(folders => {

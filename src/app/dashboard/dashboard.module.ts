@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DashboardComponent } from './dashboard.component';
-import {RouterModule, Routes} from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { BookmarksContainerComponent } from './components/bookmarks-container/bookmarks-container.component';
 import { FolderComponent } from './components/folder/folder.component';

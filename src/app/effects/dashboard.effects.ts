@@ -1,30 +1,47 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { catchError, map, concatMap } from 'rxjs/operators';
-import { EMPTY, of } from 'rxjs';
+import {catchError, map, concatMap, switchMap, tap} from 'rxjs/operators';
+import { of } from 'rxjs';
 
 import * as DashboardActions from '../actions/dashboard.actions';
-
-
+import {DashboardService} from '../shared/services/dashboard.service';
+import {ROUTER_NAVIGATION} from '@ngrx/router-store';
 
 @Injectable()
 export class DashboardEffects {
+  onNavigation$ = createEffect(() => {
+    return this.actions$.pipe(
+      ofType(ROUTER_NAVIGATION),
+      // TODO: filter out by dashboad url only
+      tap(router => console.log(router)),
+      switchMap(() => [
+        DashboardActions.loadFolderList(),
+        DashboardActions.loadBookmarkList()
+      ])
+    );
+  });
 
-  loadDashboards$ = createEffect(() => {
-    return this.actions$.pipe( 
-
-      ofType(DashboardActions.loadDashboards),
+  loadDashboardsFolder$ = createEffect(() => {
+    return this.actions$.pipe(
+      ofType(DashboardActions.loadFolderList),
       concatMap(() =>
-        /** An EMPTY observable only emits completion. Replace with your own observable API request */
-        EMPTY.pipe(
-          map(data => DashboardActions.loadDashboardsSuccess({ data })),
-          catchError(error => of(DashboardActions.loadDashboardsFailure({ error }))))
+        this.dashboardService.getFolderList().pipe(
+          map(data => DashboardActions.loadFolderListSuccess({ data })),
+          catchError(error => of(DashboardActions.loadFolderListFailure({ error }))))
       )
     );
   });
 
+  loadDashboardsBookmark$ = createEffect(() => {
+    return this.actions$.pipe(
+      ofType(DashboardActions.loadBookmarkList),
+      concatMap(() =>
+        this.dashboardService.getBookmarkList().pipe(
+          map(data => DashboardActions.loadBookmarkListSuccess({ data })),
+          catchError(error => of(DashboardActions.loadBookmarkListFailure({ error }))))
+      )
+    );
+  });
 
-
-  constructor(private actions$: Actions) {}
-
+  constructor(private actions$: Actions, private dashboardService: DashboardService) {}
 }
