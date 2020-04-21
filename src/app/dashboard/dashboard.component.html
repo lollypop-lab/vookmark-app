@@ -3,6 +3,8 @@
     <app-sidebar *ngIf="dataLoaded" [folders]="folders"></app-sidebar>
   </div>
   <div class="dashboard-bookmarks">
+    <label for="search">Search: </label>
+    <input id="search" type="text" placeholder="Search..." [(ngModel)]="searchString" (ngModelChange)="search()">
     <app-bookmarks-container [folders]="folders" [bookmarks]="bookmarks"></app-bookmarks-container>
   </div>
 </div>

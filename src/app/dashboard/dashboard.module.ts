@@ -9,6 +9,7 @@ import { StoreModule } from '@ngrx/store';
 import * as fromDashboard from '../reducers/dashboard.reducer';
 import { EffectsModule } from '@ngrx/effects';
 import { DashboardEffects } from '../effects/dashboard.effects';
+import {FormsModule} from '@angular/forms';
 
 
 const routes: Routes = [
@@ -27,7 +28,8 @@ const routes: Routes = [
     CommonModule,
     RouterModule.forChild(routes),
     StoreModule.forFeature(fromDashboard.dashboardFeatureKey, fromDashboard.reducer),
-    EffectsModule.forFeature([DashboardEffects])
+    EffectsModule.forFeature([DashboardEffects]),
+    FormsModule
   ]
 })
 export class DashboardModule { }
