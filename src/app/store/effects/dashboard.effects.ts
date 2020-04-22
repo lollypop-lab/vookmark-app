@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import {catchError, map, concatMap, switchMap, tap} from 'rxjs/operators';
+import {catchError, map, concatMap, switchMap, tap, filter} from 'rxjs/operators';
 import { of } from 'rxjs';
 
 import * as DashboardActions from '../actions/dashboard.actions';
-import {ROUTER_NAVIGATION} from '@ngrx/router-store';
+import {ROUTER_NAVIGATION, RouterNavigationAction} from '@ngrx/router-store';
 import {DashboardService} from '../../shared/services/dashboard.service';
+import {isDashboard} from '../../utils/router.util';
 
 @Injectable()
 export class DashboardEffects {
@@ -13,7 +14,7 @@ export class DashboardEffects {
     return this.actions$.pipe(
       ofType(ROUTER_NAVIGATION),
       // TODO: filter out by dashboad url only
-      tap(router => console.log(router)),
+      filter((router: RouterNavigationAction) => isDashboard(router.payload.routerState.url)),
       switchMap(() => [
         DashboardActions.loadFolderList(),
         DashboardActions.loadBookmarkList()

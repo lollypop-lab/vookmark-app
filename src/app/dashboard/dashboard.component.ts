@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Store} from '@ngrx/store';
-import {getBookmarksList, getFolderList} from '../selectors/dashboard.selectors';
+import {getBookmarksList, getFolderList} from '../store/selectors/dashboard.selectors';
 import {ActivatedRoute} from '@angular/router';
 import FlexSearch from 'flexsearch';
 

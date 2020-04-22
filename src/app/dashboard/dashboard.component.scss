@@ -14,7 +14,7 @@
 
 .dashboard-bookmarks {
   flex: 4;
-
+  overflow: scroll;
   #search {
     width: 80%;
     padding: 5px;
