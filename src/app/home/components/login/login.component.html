@@ -1,0 +1,25 @@
+<h4>Authentication</h4>
+<div *ngIf="activeUser; else login">
+  <button (click)="onLogout()">Logout</button>
+</div>
+
+<ng-template #login>
+  <form [formGroup]="authForm" (ngSubmit)="submitForm()">
+    <input
+      formControlName="email"
+      placeholder="Email"
+      type="text" />
+
+    <input
+      formControlName="password"
+      placeholder="Password"
+      type="password" />
+
+    <br>
+    <button type="submit">
+      Submit
+    </button>
+
+  </form>
+</ng-template>
+
