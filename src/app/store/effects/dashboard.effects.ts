@@ -4,8 +4,8 @@ import {catchError, map, concatMap, switchMap, tap} from 'rxjs/operators';
 import { of } from 'rxjs';
 
 import * as DashboardActions from '../actions/dashboard.actions';
-import {DashboardService} from '../shared/services/dashboard.service';
 import {ROUTER_NAVIGATION} from '@ngrx/router-store';
+import {DashboardService} from '../../shared/services/dashboard.service';
 
 @Injectable()
 export class DashboardEffects {

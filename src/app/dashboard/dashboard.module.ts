@@ -6,9 +6,9 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { BookmarksContainerComponent } from './components/bookmarks-container/bookmarks-container.component';
 import { FolderComponent } from './components/folder/folder.component';
 import { StoreModule } from '@ngrx/store';
-import * as fromDashboard from '../reducers/dashboard.reducer';
+import * as fromDashboard from '../store/reducers/dashboard.reducer';
 import { EffectsModule } from '@ngrx/effects';
-import { DashboardEffects } from '../effects/dashboard.effects';
+import { DashboardEffects } from '../store/effects/dashboard.effects';
 import {FormsModule} from '@angular/forms';
 
 

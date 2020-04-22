@@ -1,7 +1,7 @@
 import { Action, createReducer, on } from '@ngrx/store';
 import * as DashboardActions from '../actions/dashboard.actions';
-import {BookmarkList, Bookmarks, FolderList} from '../mockData/bookmark.mock';
-import {Bookmark, Folder} from '../models/bookmark.model';
+import {Bookmark, Folder} from '../../models/bookmark.model';
+import {Bookmarks} from '../../mockData/bookmark.mock';
 
 export const dashboardFeatureKey = 'dashboard';
 
