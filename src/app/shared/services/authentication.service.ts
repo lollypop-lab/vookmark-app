@@ -1,6 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {BehaviorSubject, Observable} from 'rxjs';
+import {Router} from '@angular/router';
 
 export interface User {
   userName: string;
@@ -20,7 +21,7 @@ export class AuthenticationService {
   private currentUserSubject: BehaviorSubject<any>;
   public currentUser: Observable<any>;
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private router: Router) {
     this.currentUserSubject = new BehaviorSubject(
       localStorage.getItem('currentUser')
     );
@@ -44,6 +45,7 @@ export class AuthenticationService {
       };
       localStorage.setItem('currentUser', JSON.stringify(currentUser));
       this.currentUserSubject.next(currentUser);
+      this.router.navigate(['dashboard']);
     });
   }
 

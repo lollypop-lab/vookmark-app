@@ -25,6 +25,7 @@ export class LoginComponent implements OnInit {
 
   submitForm() {
     const credentials = this.authForm.value;
+    // TODO: use ngrx flow
     this.authService.login(credentials.email, credentials.password);
   }
 
