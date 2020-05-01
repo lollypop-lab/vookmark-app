@@ -1,5 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {Bookmark, Folder} from '../../../models/bookmark.model';
+import {Bookmark} from '../../../models/bookmark.model';
+import {Folder} from '../../../models/folder.model';
 
 @Component({
   selector: 'app-bookmarks-container',

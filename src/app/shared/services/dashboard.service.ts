@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import {Observable, of} from 'rxjs';
-import {Bookmark, Folder} from '../../models/bookmark.model';
+import {Bookmark} from '../../models/bookmark.model';
+import {Folder} from '../../models/folder.model';
 import {BookmarkList, FolderList} from '../../mockData/bookmark.mock';
 import {HttpClient} from '@angular/common/http';
 

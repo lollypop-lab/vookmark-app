@@ -1,7 +1,7 @@
 // TODO: need to work on this component
 // very important to manage both folder and link together
 import {Component, Input, OnInit} from '@angular/core';
-import {Folder} from '../../../models/bookmark.model';
+import {Folder} from '../../../models/folder.model';
 
 @Component({
   selector: 'app-folder',
