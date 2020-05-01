@@ -16,6 +16,7 @@ export interface AuthResponse {
   providedIn: 'root'
 })
 export class AuthenticationService {
+  // TODO: move to all url utils
   public url = 'http://markyourbook.herokuapp.com/user_token';
 
   private currentUserSubject: BehaviorSubject<any>;

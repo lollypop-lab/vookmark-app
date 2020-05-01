@@ -12,6 +12,8 @@ import { environment } from '../environments/environment';
 import { StoreRouterConnectingModule } from '@ngrx/router-store';
 import {EffectsModule} from '@ngrx/effects';
 import {AuthGuard} from './guards/auth.guard';
+import {HTTP_INTERCEPTORS} from '@angular/common/http';
+import {CustomHttpInterceptor} from './customHttpInterceptor';
 
 @NgModule({
   declarations: [
@@ -27,7 +29,10 @@ import {AuthGuard} from './guards/auth.guard';
     EffectsModule.forRoot(),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production })
   ],
-  providers: [AuthGuard],
+  providers: [
+    AuthGuard,
+    { provide: HTTP_INTERCEPTORS, useClass: CustomHttpInterceptor, multi: true}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
