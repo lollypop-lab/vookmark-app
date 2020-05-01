@@ -2,6 +2,15 @@ import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {BehaviorSubject, Observable} from 'rxjs';
 
+export interface User {
+  userName: string;
+  userToken: string;
+}
+
+export interface AuthResponse {
+  jwt: string;
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -28,15 +37,14 @@ export class AuthenticationService {
     fromData.append('[auth]email', email);
     fromData.append('[auth]password', pass);
 
-    // this.http.post(this.url, fromData).subscribe(res => {
-    //   console.log(res);
-    // });
-
-    if ( email === 'linkon' && pass === '1234') {
-      localStorage.setItem('currentUser', email);
-      this.currentUserSubject.next(email);
-    }
-
+    this.http.post(this.url, fromData).subscribe((response: AuthResponse) => {
+      const currentUser: User = {
+        userName : email,
+        userToken : response.jwt
+      };
+      localStorage.setItem('currentUser', JSON.stringify(currentUser));
+      this.currentUserSubject.next(currentUser);
+    });
   }
 
   public logout() {
