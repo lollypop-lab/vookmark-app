@@ -1,4 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
+import {MatDialog} from '@angular/material/dialog';
+import {BookmarkDialogComponent} from '../bookmark-dialog/bookmark-dialog.component';
 
 @Component({
   selector: 'app-sidebar',
@@ -8,7 +10,7 @@ import {Component, Input, OnInit} from '@angular/core';
 export class SidebarComponent implements OnInit {
   @Input() folders;
   public isNestedItemVisiabled: boolean = false;
-  constructor() { }
+  constructor(private dialog: MatDialog) { }
 
   public get isVisible(): boolean {
     return this.isNestedItemVisiabled;
@@ -20,5 +22,13 @@ export class SidebarComponent implements OnInit {
 
   public onToggleClick(): void {
     this.isNestedItemVisiabled = !this.isNestedItemVisiabled;
+  }
+
+  addBookMark() {
+    const diaRef = this.dialog.open(BookmarkDialogComponent);
+
+    diaRef.afterClosed().subscribe(() => {
+      console.log('closed');
+    });
   }
 }

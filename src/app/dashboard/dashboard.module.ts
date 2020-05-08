@@ -10,6 +10,8 @@ import * as fromDashboard from '../store/reducers/dashboard.reducer';
 import { EffectsModule } from '@ngrx/effects';
 import { DashboardEffects } from '../store/effects/dashboard.effects';
 import {FormsModule} from '@angular/forms';
+import { BookmarkDialogComponent } from './components/bookmark-dialog/bookmark-dialog.component';
+import {MatDialogModule} from '@angular/material/dialog';
 
 
 const routes: Routes = [
@@ -23,9 +25,10 @@ const routes: Routes = [
   },
 ];
 @NgModule({
-  declarations: [DashboardComponent, SidebarComponent, BookmarksContainerComponent, FolderComponent],
+  declarations: [DashboardComponent, SidebarComponent, BookmarksContainerComponent, FolderComponent, BookmarkDialogComponent],
   imports: [
     CommonModule,
+    MatDialogModule,
     RouterModule.forChild(routes),
     StoreModule.forFeature(fromDashboard.dashboardFeatureKey, fromDashboard.reducer),
     EffectsModule.forFeature([DashboardEffects]),

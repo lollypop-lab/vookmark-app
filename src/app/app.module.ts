@@ -14,6 +14,7 @@ import {EffectsModule} from '@ngrx/effects';
 import {AuthGuard} from './guards/auth.guard';
 import {HTTP_INTERCEPTORS} from '@angular/common/http';
 import {CustomHttpInterceptor} from './customHttpInterceptor';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import {CustomHttpInterceptor} from './customHttpInterceptor';
     HomeModule,
     StoreRouterConnectingModule.forRoot(),
     EffectsModule.forRoot(),
-    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production })
+    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
+    BrowserAnimationsModule
   ],
   providers: [
     AuthGuard,

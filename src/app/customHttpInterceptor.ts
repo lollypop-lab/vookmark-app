@@ -11,8 +11,6 @@ export class CustomHttpInterceptor implements HttpInterceptor {
       localStorage.getItem('currentUser')
     );
 
-    console.log(currentUser.userToken);
-
     if(!currentUser) {
       return next.handle(req);
     }
